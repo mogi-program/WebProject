@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>회원가입</legend>
+        <form method="get" action="01.html">
+            <table>
+                <tr>
+                    <td><label for="username">성명 : </label></td>
+                    <td><input type="text" name="username"> </td>
+                </tr>
+                <tr>
+                    <td><label for="email">이메일 : </label></td>
+                    <td><input type="email" name="email" id="email"> </td>
+                </tr>
+                <tr>
+                    <td><label for="address">주소 : </label></td>
+                    <td><input type="text" name="address" id="address"> </td>
+                </tr>
+                <tr>
+                    <td><label for="gender">성별 : </label></td>
+                    <td>
+                        <input type="radio" name="gender" value="male" id="male">
+                        <label for="male">남성</label>
+                        <input type="radio" name="gender" value="female" id="female">
+                        <label for="female">여성</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>취미: </td>
+                    <td>
+                        <input type="checkbox" name="hobby" value="music">음악 &nbsp; &nbsp;
+                        <input type="checkbox" name="hobby" value="sports">운동 &nbsp; &nbsp;
+                        <input type="checkbox" name="hobby" value="travel">여행 &nbsp; &nbsp;
+                        <input type="checkbox" name="hobby" value="reading">독서 &nbsp; &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        남기고 싶은 말:
+                    </td>
+                    <td>
+                        <textarea name="message" cols="30" rows="5"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="가입하기"> &nbsp;&nbsp;
+                        <input type="reset" value="다시작성">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </fieldset>
+
+</body>
+
+</html>
