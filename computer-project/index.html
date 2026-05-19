@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyPC - 나만의 컴퓨터를 만들다</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== 헤더: 로고 + 장바구니 / 로그인 ===== -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">My<span>PC</span></a>
+      <div class="header-buttons">
+        <button class="btn-outline">장바구니</button>
+        <button class="btn-outline">로그인</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== 네비게이션: 페이지 이동 메뉴 ===== -->
+  <nav class="nav">
+    <div class="container">
+      <ul>
+        <li><a href="index.html" class="active">모든 부품</a></li>
+        <li><a href="index.html">커뮤니티</a></li>
+        <li><a href="index.html">주변 기기</a></li>
+        <li><a href="my-computer.html">나만의 컴퓨터</a></li>
+        <li><a href="pc-recommend.html">PC 추천</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- ===== 이미지 슬라이드 (CSS3 라디오 버튼으로 동작, 자바스크립트 없음) ===== -->
+    <div class="slider">
+      <!-- 라디오 버튼 3개: 화면에는 숨겨져 있고 label 클릭으로 선택됨 -->
+      <input type="radio" name="slide" id="slide1" checked>
+      <input type="radio" name="slide" id="slide2">
+      <input type="radio" name="slide" id="slide3">
+
+      <!-- 슬라이드 트랙 -->
+      <div class="slides">
+        <div class="slide slide-1">
+          <h2>나만의 컴퓨터를 직접 조립하세요</h2>
+          <p>부품 하나하나 골라 만드는 맞춤형 PC</p>
+        </div>
+        <div class="slide slide-2">
+          <h2>전문가가 고른 추천 PC</h2>
+          <p>용도에 딱 맞는 구성으로 빠르게 구매</p>
+        </div>
+        <div class="slide slide-3">
+          <h2>이번 주 특가 그래픽카드</h2>
+          <p>인기 부품을 합리적인 가격에 만나보세요</p>
+        </div>
+      </div>
+
+      <!-- 슬라이드별 좌우 화살표 (현재 슬라이드에 맞는 화살표만 표시) -->
+      <div class="arrows arrows-1">
+        <label for="slide3" class="slider-arrow arrow-left">&#9664;</label>
+        <label for="slide2" class="slider-arrow arrow-right">&#9654;</label>
+      </div>
+      <div class="arrows arrows-2">
+        <label for="slide1" class="slider-arrow arrow-left">&#9664;</label>
+        <label for="slide3" class="slider-arrow arrow-right">&#9654;</label>
+      </div>
+      <div class="arrows arrows-3">
+        <label for="slide2" class="slider-arrow arrow-left">&#9664;</label>
+        <label for="slide1" class="slider-arrow arrow-right">&#9654;</label>
+      </div>
+
+      <!-- 하단 동그란 인디케이터 -->
+      <div class="slider-dots">
+        <label for="slide1"></label>
+        <label for="slide2"></label>
+        <label for="slide3"></label>
+      </div>
+    </div>
+
+    <!-- ===== 검색창 ===== -->
+    <div class="search-bar">
+      <input type="text" placeholder="부품, 컴퓨터 명으로 검색">
+      <button>검색</button>
+    </div>
+
+    <!-- ===== 컴퓨터 카드 그리드 (3열 x 2줄 = 6개) ===== -->
+    <section class="card-grid">
+
+      <article class="card">
+        <div class="card-thumb">&#128421;</div>
+        <div class="card-body">
+          <h3 class="card-title">게이밍 PC - 라이트</h3>
+          <p class="card-desc">RTX 4060 탑재, 인기 게임을<br>풀옵션으로 즐기는 입문 게이밍</p>
+          <p class="card-price">899,000원</p>
+          <div class="card-buttons">
+            <button class="btn-fill">구매</button>
+            <button class="btn-line">장바구니</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb">&#128421;</div>
+        <div class="card-body">
+          <h3 class="card-title">게이밍 PC - 프로</h3>
+          <p class="card-desc">RTX 4070 SUPER 탑재,<br>고주사율 게이밍에 최적화</p>
+          <p class="card-price">1,690,000원</p>
+          <div class="card-buttons">
+            <button class="btn-fill">구매</button>
+            <button class="btn-line">장바구니</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb">&#128421;</div>
+        <div class="card-body">
+          <h3 class="card-title">사무용 PC - 베이직</h3>
+          <p class="card-desc">문서 작업과 인터넷에 최적,<br>조용하고 안정적인 구성</p>
+          <p class="card-price">459,000원</p>
+          <div class="card-buttons">
+            <button class="btn-fill">구매</button>
+            <button class="btn-line">장바구니</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb">&#128421;</div>
+        <div class="card-body">
+          <h3 class="card-title">크리에이터 PC</h3>
+          <p class="card-desc">영상 편집·3D 작업용,<br>대용량 메모리와 빠른 저장장치</p>
+          <p class="card-price">1,890,000원</p>
+          <div class="card-buttons">
+            <button class="btn-fill">구매</button>
+            <button class="btn-line">장바구니</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb">&#128421;</div>
+        <div class="card-body">
+          <h3 class="card-title">게이밍 PC - 얼티밋</h3>
+          <p class="card-desc">RTX 4080 SUPER 탑재,<br>4K 고사양 게임도 여유롭게</p>
+          <p class="card-price">2,650,000원</p>
+          <div class="card-buttons">
+            <button class="btn-fill">구매</button>
+            <button class="btn-line">장바구니</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb">&#128421;</div>
+        <div class="card-body">
+          <h3 class="card-title">가성비 입문 PC</h3>
+          <p class="card-desc">처음 맞추는 게이밍 PC로 좋은<br>합리적인 가격의 기본 구성</p>
+          <p class="card-price">699,000원</p>
+          <div class="card-buttons">
+            <button class="btn-fill">구매</button>
+            <button class="btn-line">장바구니</button>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- ===== 푸터 ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p><strong>MyPC</strong> &nbsp;|&nbsp; 웹프로그래밍 기초 과제</p>
+      <p>인공지능소프트웨어과 1학년 장지혁</p>
+    </div>
+  </footer>
+
+</body>
+</html>

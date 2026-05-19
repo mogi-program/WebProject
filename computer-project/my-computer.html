@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyPC - 나만의 컴퓨터</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== 헤더 ===== -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">My<span>PC</span></a>
+      <div class="header-buttons">
+        <button class="btn-outline">장바구니</button>
+        <button class="btn-outline">로그인</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== 네비게이션 ===== -->
+  <nav class="nav">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">모든 부품</a></li>
+        <li><a href="index.html">커뮤니티</a></li>
+        <li><a href="index.html">주변 기기</a></li>
+        <li><a href="my-computer.html" class="active">나만의 컴퓨터</a></li>
+        <li><a href="pc-recommend.html">PC 추천</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <div class="page-title">
+      <h1>나만의 컴퓨터</h1>
+      <p>왼쪽에서 부품 종류를 선택하면 오른쪽에 해당 부품 목록이 나타납니다.</p>
+    </div>
+
+    <!-- ===== 부품 조립 박스 =====
+         원리: 라디오 버튼(part-mb ~ part-cooler) 중 선택된 것에 따라
+         왼쪽 버튼이 강조되고, 오른쪽에 해당 부품 목록만 표시된다. -->
+    <div class="builder-box">
+
+      <!-- 라디오 버튼 7개 (숨김 처리) -->
+      <input type="radio" name="part" id="part-mb" checked>
+      <input type="radio" name="part" id="part-cpu">
+      <input type="radio" name="part" id="part-gpu">
+      <input type="radio" name="part" id="part-ram">
+      <input type="radio" name="part" id="part-psu">
+      <input type="radio" name="part" id="part-case">
+      <input type="radio" name="part" id="part-cooler">
+
+      <div class="builder-layout">
+
+        <!-- 왼쪽: 부품 종류 선택 버튼 (현재 선택된 부품명도 함께 표시) -->
+        <div class="part-buttons">
+          <label for="part-mb">메인보드<span class="selected-name">ASUS PRIME B650M-A II</span></label>
+          <label for="part-cpu">CPU<span class="selected-name">AMD 라이젠5 7500F</span></label>
+          <label for="part-gpu">GPU<span class="selected-name">RTX 4060 8GB</span></label>
+          <label for="part-ram">RAM<span class="selected-name">삼성 DDR5-5600 16GB</span></label>
+          <label for="part-psu">PSU<span class="selected-name">600W 80PLUS 브론즈</span></label>
+          <label for="part-case">CASE<span class="selected-name">미들타워 강화유리</span></label>
+          <label for="part-cooler">COOLER<span class="selected-name">타워형 공랭 쿨러</span></label>
+        </div>
+
+        <!-- 오른쪽: 선택한 종류의 부품 목록 (목록이 길면 스크롤) -->
+        <div class="part-list-wrap">
+          <h3>부품 목록에서 원하는 제품을 선택하세요</h3>
+
+          <!-- 메인보드 목록 -->
+          <div class="part-list list-mb">
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>ASUS PRIME B650M-A II</strong><span>가성비 좋은 마이크로ATX 보드</span></div>
+              <span class="item-price">189,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>MSI MAG B650 TOMAHAWK</strong><span>확장성 좋은 ATX 보드</span></div>
+              <span class="item-price">259,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>GIGABYTE B650 AORUS ELITE</strong><span>안정적인 전원부 구성</span></div>
+              <span class="item-price">235,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>ASUS ROG STRIX X670E-E</strong><span>최상위 오버클럭용 보드</span></div>
+              <span class="item-price">519,000원</span>
+            </div>
+          </div>
+
+          <!-- CPU 목록 -->
+          <div class="part-list list-cpu">
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>AMD 라이젠5 7500F</strong><span>6코어 12스레드, 게이밍 입문</span></div>
+              <span class="item-price">219,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>AMD 라이젠7 7800X3D</strong><span>게이밍 성능 최강 CPU</span></div>
+              <span class="item-price">489,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>AMD 라이젠9 7950X</strong><span>16코어, 작업용 끝판왕</span></div>
+              <span class="item-price">689,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>인텔 코어i5-14400F</strong><span>가성비 사무·게이밍용</span></div>
+              <span class="item-price">239,000원</span>
+            </div>
+          </div>
+
+          <!-- GPU 목록 -->
+          <div class="part-list list-gpu">
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>RTX 4060 8GB</strong><span>FHD 게이밍 입문용</span></div>
+              <span class="item-price">379,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>RTX 4070 SUPER 12GB</strong><span>QHD 고주사율 게이밍</span></div>
+              <span class="item-price">869,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>RTX 4080 SUPER 16GB</strong><span>4K 게이밍·영상 작업용</span></div>
+              <span class="item-price">1,499,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>RX 7800 XT 16GB</strong><span>가성비 QHD 게이밍</span></div>
+              <span class="item-price">689,000원</span>
+            </div>
+          </div>
+
+          <!-- RAM 목록 -->
+          <div class="part-list list-ram">
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>삼성 DDR5-5600 16GB</strong><span>8GB x 2, 기본 게이밍용</span></div>
+              <span class="item-price">89,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>팀그룹 DDR5-6000 32GB</strong><span>16GB x 2, 멀티태스킹용</span></div>
+              <span class="item-price">169,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>G.SKILL DDR5-6000 64GB</strong><span>32GB x 2, 영상 편집용</span></div>
+              <span class="item-price">359,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>삼성 DDR5-5600 8GB</strong><span>8GB x 1, 사무용</span></div>
+              <span class="item-price">45,000원</span>
+            </div>
+          </div>
+
+          <!-- PSU 목록 -->
+          <div class="part-list list-psu">
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>600W 80PLUS 브론즈</strong><span>입문 게이밍 PC용</span></div>
+              <span class="item-price">69,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>750W 80PLUS 골드</strong><span>고성능 PC 안정 공급</span></div>
+              <span class="item-price">129,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>850W 80PLUS 골드</strong><span>고사양 그래픽카드용</span></div>
+              <span class="item-price">159,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>1000W 80PLUS 플래티넘</strong><span>워크스테이션용</span></div>
+              <span class="item-price">259,000원</span>
+            </div>
+          </div>
+
+          <!-- CASE 목록 -->
+          <div class="part-list list-case">
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>미니타워 M-ATX</strong><span>좁은 공간용 콤팩트 케이스</span></div>
+              <span class="item-price">39,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>미들타워 강화유리</strong><span>가장 무난한 표준형 케이스</span></div>
+              <span class="item-price">69,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>빅타워 ATX</strong><span>최고의 확장성과 쿨링</span></div>
+              <span class="item-price">119,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>화이트 미들타워</strong><span>깔끔한 화이트 인테리어</span></div>
+              <span class="item-price">89,000원</span>
+            </div>
+          </div>
+
+          <!-- COOLER 목록 -->
+          <div class="part-list list-cooler">
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>공랭 기본 쿨러</strong><span>CPU 기본 제공 수준</span></div>
+              <span class="item-price">19,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>타워형 공랭 쿨러</strong><span>조용하고 준수한 성능</span></div>
+              <span class="item-price">49,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>240mm 수랭 쿨러</strong><span>고성능 CPU 발열 잡기</span></div>
+              <span class="item-price">99,000원</span>
+            </div>
+            <div class="part-item">
+              <span class="star">&#9734;</span>
+              <div class="info"><strong>360mm 수랭 쿨러</strong><span>최상위 CPU 쿨링 성능</span></div>
+              <span class="item-price">159,000원</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 구매 / 장바구니 버튼 -->
+    <div class="builder-actions">
+      <button class="btn-fill" style="flex:none;">구매</button>
+      <button class="btn-line" style="flex:none;">장바구니</button>
+    </div>
+
+  </main>
+
+  <!-- ===== 푸터 ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p><strong>MyPC</strong> &nbsp;|&nbsp; 웹프로그래밍 기초 과제</p>
+      <p>인공지능소프트웨어과 1학년 장지혁</p>
+    </div>
+  </footer>
+
+</body>
+</html>

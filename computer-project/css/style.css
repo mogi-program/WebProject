@@ -1,0 +1,713 @@
+/* =========================================================
+   MyPC - 컴퓨터 구매 사이트 공통 스타일시트
+   사용 기술: CSS3 (Flexbox, Grid, 변수, 전환효과,
+   가상클래스 :hover / :checked 를 이용한 자바스크립트 없는 동작)
+   ========================================================= */
+
+/* ----- 0. CSS 변수 (색상을 한 곳에서 관리) ----- */
+:root {
+  --navy: #1e293b;        /* 진한 남색 - 헤더, 글자 */
+  --blue: #2563eb;        /* 포인트 파란색 - 버튼, 강조 */
+  --blue-dark: #1d4ed8;   /* 버튼 호버용 진한 파랑 */
+  --gray-bg: #f1f5f9;     /* 페이지 배경 */
+  --line: #e2e8f0;        /* 테두리 선 색 */
+  --text: #334155;        /* 본문 글자색 */
+  --text-light: #64748b;  /* 옅은 글자색 */
+  --white: #ffffff;
+}
+
+/* ----- 1. 기본 초기화 ----- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;        /* 패딩을 너비에 포함 */
+}
+
+body {
+  font-family: "맑은 고딕", "Malgun Gothic", sans-serif;
+  background-color: var(--gray-bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ----- 2. 공통 레이아웃 컨테이너 ----- */
+.container {
+  width: 1100px;
+  max-width: 95%;
+  margin: 0 auto;        /* 가운데 정렬 */
+}
+
+/* ----- 3. 헤더 (로고 + 로그인/장바구니) ----- */
+.header {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--navy);
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--blue);          /* 로고 일부만 파란색 강조 */
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* 둥근 테두리 버튼 (장바구니, 로그인) */
+.btn-outline {
+  padding: 9px 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background-color: var(--white);
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;        /* 부드러운 색 변화 */
+}
+
+.btn-outline:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* ----- 4. 네비게이션 바 ----- */
+.nav {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 34px;
+}
+
+.nav li a {
+  display: block;
+  padding: 14px 0;
+  font-size: 15px;
+  color: var(--text);
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.nav li a:hover {
+  color: var(--blue);
+}
+
+/* 현재 페이지 메뉴 강조 */
+.nav li a.active {
+  color: var(--blue);
+  font-weight: bold;
+  border-bottom-color: var(--blue);
+}
+
+/* ----- 5. 이미지 슬라이드 (자바스크립트 없이 CSS만 사용) -----
+   원리: 라디오 버튼 3개 중 선택된 것에 따라
+   .slides 트랙을 transform 으로 좌우 이동시킨다. */
+.slider {
+  position: relative;
+  margin-top: 26px;
+  border-radius: 12px;
+  overflow: hidden;            /* 넘치는 슬라이드 숨김 */
+  border: 1px solid var(--line);
+}
+
+/* 라디오 버튼은 화면에서 숨김 (label 로만 조작) */
+.slider input[type="radio"] {
+  display: none;
+}
+
+.slides {
+  display: flex;               /* 슬라이드를 가로로 나열 */
+  width: 300%;                 /* 슬라이드 3장이므로 300% */
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  width: 33.3333%;       /* 슬라이드 3장이 트랙(300%)을 1/3씩 차지 */
+  flex-shrink: 0;        /* 슬라이드가 줄어들지 않도록 고정 */
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  text-align: center;
+}
+
+.slide h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.slide p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* 슬라이드마다 다른 배경 그라데이션 */
+.slide-1 { background: linear-gradient(120deg, #2563eb, #1e3a8a); }
+.slide-2 { background: linear-gradient(120deg, #0f766e, #115e59); }
+.slide-3 { background: linear-gradient(120deg, #7c3aed, #4c1d95); }
+
+/* 선택된 라디오 버튼에 따라 트랙을 이동 */
+#slide1:checked ~ .slides { transform: translateX(0%); }
+#slide2:checked ~ .slides { transform: translateX(-33.333%); }
+#slide3:checked ~ .slides { transform: translateX(-66.666%); }
+
+/* 좌우 화살표 (label 을 클릭하면 라디오가 바뀜) */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--navy);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  z-index: 2;
+}
+
+.slider-arrow:hover {
+  background-color: var(--white);
+}
+
+.arrow-left  { left: 16px; }
+.arrow-right { right: 16px; }
+
+/* 화살표는 현재 슬라이드가 선택됐을 때만 보이도록 묶어둠 */
+.arrows { display: none; }
+#slide1:checked ~ .arrows-1 { display: block; }
+#slide2:checked ~ .arrows-2 { display: block; }
+#slide3:checked ~ .arrows-3 { display: block; }
+
+/* 하단 동그란 인디케이터 */
+.slider-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.slider-dots label {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#slide1:checked ~ .slider-dots label:nth-child(1),
+#slide2:checked ~ .slider-dots label:nth-child(2),
+#slide3:checked ~ .slider-dots label:nth-child(3) {
+  background-color: var(--white);
+}
+
+/* ----- 6. 검색창 ----- */
+.search-bar {
+  display: flex;
+  margin: 24px 0;
+}
+
+.search-bar input {
+  flex: 1;                     /* 남는 공간을 모두 차지 */
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: var(--blue);
+}
+
+.search-bar button {
+  padding: 0 30px;
+  background-color: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 0 8px 8px 0;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-bar button:hover {
+  background-color: var(--blue);
+}
+
+/* ----- 7. 컴퓨터 카드 그리드 (메인 페이지) ----- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* 3열 그리드 */
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.card {
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* 카드에 마우스를 올리면 살짝 떠오르는 효과 */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(30, 41, 59, 0.12);
+}
+
+/* 사진 자리 - 실제 이미지 대신 CSS 로 만든 플레이스홀더 */
+.card-thumb {
+  height: 180px;
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: #94a3b8;
+}
+
+.card-body {
+  padding: 18px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  min-height: 42px;            /* 설명 길이가 달라도 높이 통일 */
+}
+
+.card-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--blue);
+  margin-bottom: 14px;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* 채워진 버튼 (구매) / 테두리 버튼 (장바구니) */
+.btn-fill {
+  flex: 1;
+  padding: 10px 0;
+  background-color: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-fill:hover {
+  background-color: var(--blue);
+}
+
+.btn-line {
+  flex: 1;
+  padding: 10px 0;
+  background-color: var(--white);
+  color: var(--navy);
+  border: 1px solid var(--navy);
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-line:hover {
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+/* ----- 8. 페이지 제목 ----- */
+.page-title {
+  margin: 34px 0 22px;
+}
+
+.page-title h1 {
+  font-size: 26px;
+  color: var(--navy);
+}
+
+.page-title p {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--text-light);
+}
+
+/* ====== PC 추천 페이지 전용 스타일 ====== */
+
+/* ----- 9. 카테고리 선택 박스 ----- */
+.category-box {
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 26px;
+  margin-bottom: 30px;
+}
+
+.category-box .hint {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+/* 라디오 버튼 숨김 */
+.category-box input[type="radio"] {
+  display: none;
+}
+
+/* 상위 카테고리 버튼 줄 */
+.category-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.category-row label {
+  flex: 1;
+  padding: 16px 0;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.category-row label:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* 선택된 상위 카테고리 강조 */
+#cat1:checked ~ .category-row label[for="cat1"],
+#cat2:checked ~ .category-row label[for="cat2"],
+#cat3:checked ~ .category-row label[for="cat3"],
+#cat4:checked ~ .category-row label[for="cat4"] {
+  background-color: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+  font-weight: bold;
+}
+
+/* 하위 카테고리 줄 - 평소엔 숨김 */
+.subcategory {
+  display: none;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* 선택된 상위 카테고리에 맞는 하위 줄만 보이게 */
+#cat1:checked ~ .sub-cat1,
+#cat2:checked ~ .sub-cat2,
+#cat3:checked ~ .sub-cat3,
+#cat4:checked ~ .sub-cat4 {
+  display: flex;
+}
+
+.subcategory span {
+  padding: 9px 18px;
+  background-color: var(--gray-bg);
+  border-radius: 20px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.research-btn {
+  display: block;
+  margin-left: auto;
+  margin-top: 16px;
+  padding: 12px 34px;
+  background-color: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.research-btn:hover {
+  background-color: var(--blue);
+}
+
+/* ----- 10. 사양 상세 카드 (PC 추천 결과) ----- */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.spec-card {
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.spec-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(30, 41, 59, 0.12);
+}
+
+.spec-thumb {
+  height: 150px;
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #94a3b8;
+}
+
+.spec-name {
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--navy);
+  padding: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* 사양 한 줄 (항목명 + 값) */
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 11px 18px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.spec-row .label {
+  color: var(--text-light);
+}
+
+.spec-row .value {
+  color: var(--text);
+  font-weight: bold;
+}
+
+.spec-row.price .value {
+  color: var(--blue);
+}
+
+.spec-card .card-buttons {
+  padding: 16px;
+}
+
+/* ====== 나만의 컴퓨터 페이지 전용 스타일 ====== */
+
+/* ----- 11. 부품 선택 영역 (왼쪽 버튼 + 오른쪽 목록) ----- */
+.builder-box {
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 26px;
+  margin-bottom: 24px;
+}
+
+.builder-box input[type="radio"] {
+  display: none;
+}
+
+.builder-layout {
+  display: flex;
+  gap: 24px;
+}
+
+/* 왼쪽: 부품 종류 선택 버튼 7개 */
+.part-buttons {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.part-buttons label {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.part-buttons label:hover {
+  border-color: var(--blue);
+}
+
+.part-buttons label .selected-name {
+  display: block;
+  font-size: 13px;
+  color: var(--text-light);
+  margin-top: 3px;
+}
+
+/* 현재 선택된 부품 종류 버튼 강조 */
+#part-mb:checked     ~ .builder-layout label[for="part-mb"],
+#part-cpu:checked    ~ .builder-layout label[for="part-cpu"],
+#part-gpu:checked    ~ .builder-layout label[for="part-gpu"],
+#part-ram:checked    ~ .builder-layout label[for="part-ram"],
+#part-psu:checked    ~ .builder-layout label[for="part-psu"],
+#part-case:checked   ~ .builder-layout label[for="part-case"],
+#part-cooler:checked ~ .builder-layout label[for="part-cooler"] {
+  border-color: var(--blue);
+  background-color: #eff6ff;
+}
+
+/* 오른쪽: 선택한 종류의 부품 목록 */
+.part-list-wrap {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.part-list-wrap h3 {
+  font-size: 15px;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+/* 목록은 평소엔 숨기고, 선택된 종류만 보이게 */
+.part-list {
+  display: none;
+  max-height: 360px;
+  overflow-y: auto;            /* 항목이 많으면 스크롤 */
+}
+
+#part-mb:checked     ~ .builder-layout .list-mb,
+#part-cpu:checked    ~ .builder-layout .list-cpu,
+#part-gpu:checked    ~ .builder-layout .list-gpu,
+#part-ram:checked    ~ .builder-layout .list-ram,
+#part-psu:checked    ~ .builder-layout .list-psu,
+#part-case:checked   ~ .builder-layout .list-case,
+#part-cooler:checked ~ .builder-layout .list-cooler {
+  display: block;
+}
+
+/* 부품 목록 한 줄 */
+.part-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 8px;
+  border-bottom: 1px solid var(--line);
+  transition: background-color 0.2s;
+}
+
+.part-item:hover {
+  background-color: var(--gray-bg);
+}
+
+.part-item .star {
+  font-size: 16px;
+  color: #cbd5e1;
+}
+
+.part-item .info {
+  flex: 1;
+}
+
+.part-item .info strong {
+  display: block;
+  font-size: 14px;
+  color: var(--navy);
+}
+
+.part-item .info span {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.part-item .item-price {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--blue);
+}
+
+/* 빌더 하단 구매 / 장바구니 버튼 */
+.builder-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 50px;
+}
+
+.builder-actions button {
+  padding: 13px 40px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* ----- 12. 푸터 ----- */
+.footer {
+  background-color: var(--navy);
+  color: #cbd5e1;
+  padding: 30px 0;
+  text-align: center;
+  font-size: 13px;
+}
+
+.footer strong {
+  color: var(--white);
+}
