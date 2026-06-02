@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            let img1 = document.getElementById("img1");
+            img1.src = "https://placehold.co/300x200"
+            // img1.width = 500;
+            // img1.height = 100;
+            img1.innerHTML = "이게먼데"
+        }
+        function changeImg(){
+            if(img1.src === "https://placehold.co/300x200"){
+                img1.src = "./imgs/testk.png"
+                btn.innerHTML = "무명이미지로 바꾸기"
+            }
+            else{
+                img1.src = "https://placehold.co/300x200"
+                btn.innerHTML = "카리나 이미지로 바꾸기"
+            }
+            
+        }
+    </script>
+</head>
+
+<body>
+    <img id="img1">
+    <button id="btn" onclick="changeImg()">변경</button>
+</body>
+
+</html>
