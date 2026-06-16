@@ -13,28 +13,33 @@
                 height: "100px",
                 background: "orange"
             }).on({
-                click: function(){
+                click: function () {
                     $(this).css({
                         background: "red"
                     })
                 },
-                mouseenter: function(){
+                mouseenter: function () {
                     $(this).css({
                         background: "blue"
                     })
                 },
-                mouseleave: function(){
+                mouseleave: function () {
                     $(this).css({
                         background: "orange"
                     })
                 }
             })
+            $("a").on("click", function (event) {
+                    event.preventDefault();
+                }
+            )
         })
     </script>
 </head>
 
 <body>
     <div id="box"></div>
+    <a href="https://www.naver.com">Naver Hompage</a>
 </body>
 
 </html>
