@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+    <script>
+        window.onload = function(){
+            for(let i = 0 ; i < 10 ; i++){
+                let helement = $("<h1>Created H1 Element Object" + i + "</h1>")
+                helement.css({
+                    backgroundColor : "orange",
+                    color : "white"
+                });
+                $("body").append(helement)
+                
+                helement.dblclick(
+                    function(){
+                        $(this).remove();
+                    }
+                )
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
